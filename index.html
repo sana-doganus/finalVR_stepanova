@@ -15,18 +15,17 @@
         <img id="texture4" src="pattern4.png">
         <img id="texture5" src="pattern5.jpg">
         <img id="skyTexture" src="background.png">
-        <a-asset-item id="glasscube"
-            src="sphere.glb"
-            response-type="arraybuffer" crossorigin="anonymous">
-            </a-asset-item>
       </a-assets>
+
+      <a-entity camera look-controls position="0 1.6 5"></a-entity>
       
-      <a-box id="animated-cube" position="-10 0 5" src="#texture1" 
-             animation="property: position; from: -10 0 5; to: -10 5 5; dur: 5000; loop: true; delay: 0; easing: linear"
-             animation__2="property: position; from: -10 5 5; to: 10 5 5; dur: 5000; loop: true; delay: 5000; easing: linear"
-             animation__3="property: position; from: 10 5 5; to: 10 0 5; dur: 5000; loop: true; delay: 10000; easing: linear"
-             animation__4="property: position; from: 10 0 5; to: -10 0 5; dur: 5000; loop: true; delay: 15000; easing: linear"
-      </a-box>
+      <a-box id="animated-cube" position="0 0.5 0" color="#4CC3D9"
+             animation="property: position; to: 0 2 0; dur: 1000; startEvents: startAnimation; loop: false"
+             animation__2="property: position; to: 2 2 0; dur: 1000; startEvents: animationcomplete__moveUp; loop: false"
+             animation__3="property: position; to: 2 0.5 0; dur: 1000; startEvents: animationcomplete__moveRight; loop: false"
+             animation__4="property: position; to: 0 0.5 0; dur: 1000; startEvents: animationcomplete__moveDown; loop: false"
+             animation__5="property: position; to: 0 0.5 0; dur: 1000; startEvents: animationcomplete__moveLeft; loop: false">
+             </a-box>
 
        <!--<a-sphere position="-3 0.75 -5.5" rotation="0 0 0" radius="0.75" src="#sphereTexture"
          animation="property: rotation; to: 0 360 0; dur: 12500; loop: true; easing: linear;"
@@ -40,23 +39,26 @@
       
       <a-sky height="1024" radius="30" src="#skyTexture" theta-length="180" width="1024"></a-sky>
       <a-light type="ambient" color="#75DAFF"></a-light>
-      <a-light type="point" intensity="10" position="0 15 -5"></a-light>
-       <a-light type="point" intensity="10" position="0 -15 -5"></a-light>
-      <a-light type="point" intensity="10" position="0 7 -2"></a-light>
-      <a-entity light="type: spot; angle: -90"></a-entity>
       
       <!--<a-light type="point" intensity="1" position="0 15 -15"></a-light>-->
       <!--<a-plane src="#groundTexture" rotation="-90 0 0" height="100" width="100"></a-plane>-->
-      
-      <a-camera>
-        <a-cursor color="#FAFAFA"></a-cursor>
-      </a-camera>
+    
     </a-scene>
     <script>
-      var el = document.querySelector('#animated-cube');
-      console.log(el.hasLoaded);
-      console.log(el.getAttribute('position'));
-      console.log(el.getAttribute('animation'));
+      const cube = document.getElementById('animated-cube');
+      cube.addEventListener('animationcomplete__moveUp', () => {
+        cube.emit('animationcomplete__moveRight');
+      });
+      cube.addEventListener('animationcomplete__moveRight', () => {
+        cube.emit('animationcomplete__moveDown');
+      });
+      cube.addEventListener('animationcomplete__moveDown', () => {
+        cube.emit('animationcomplete__moveLeft');
+      });
+      cube.addEventListener('animationcomplete__moveLeft', () => {
+        cube.emit('startAnimation');
+      });
+      cube.emit('startAnimation');
     </script>
   </body>
 </html>

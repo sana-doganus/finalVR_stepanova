@@ -21,11 +21,11 @@
             </a-asset-item>
       </a-assets>
       
-      <a-box id="animated-cube" position="-2 0.5 5" src="#texture1" 
-             animation="property: position; to: -2 1.5 5; dir: alternate; dur: 1000; loop: true; delay: 0; easing: linear"
-             animation__2="property: position; to: 2 1.5 5; dir: alternate; dur: 1000; loop: true; delay: 1000; easing: linear"
-             animation__3="property: position; to: 2 0.5 5; dir: alternate; dur: 1000; loop: true; delay: 2000; easing: linear"
-             animation__4="property: position; to: -2 0.5 5; dir: alternate; dur: 1000; loop: true; delay: 3000; easing: linear"
+      <a-box id="animated-cube" position="-5 0 5" src="#texture1" 
+             animation="property: position; to: -5 5 5; dir: alternate; dur: 2000; loop: true; delay: 0; easing: linear"
+             animation__2="property: position; to: 5 5 5; dir: alternate; dur: 2000; loop: true; delay: 2000; easing: linear"
+             animation__3="property: position; to: 5 0 5; dir: alternate; dur: 2000; loop: true; delay: 4000; easing: linear"
+             animation__4="property: position; to: -5 0 5; dir: alternate; dur: 2000; loop: true; delay: 6000; easing: linear"
       </a-box>
 
        <!--<a-sphere position="-3 0.75 -5.5" rotation="0 0 0" radius="0.75" src="#sphereTexture"
@@ -38,7 +38,7 @@
         animation__2="property: position; from: 1.35 2.25 -3.5; to: 1.35 -0.2 -3.5; loop: true; dur: 7500; dir: alternate;">
       </a-sphere>-->
       
-      <a-sky height="1024" radius="30" src="#skyTexture" theta-length="180" width="1024" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;"></a-sky>
+      <a-sky height="1024" radius="30" src="#skyTexture" theta-length="180" width="1024"></a-sky>
       <a-light type="ambient" color="#75DAFF"></a-light>
       <a-light type="point" intensity="10" position="0 15 -5"></a-light>
        <a-light type="point" intensity="10" position="0 -15 -5"></a-light>

@@ -9,21 +9,27 @@
   <body>
     <a-scene>
       <a-assets>
-        <img id="sphereTexture" src="marble.jpg">
-        <img id="groundTexture" src="stone.jpg">
-        <img id="skyTexture" src="cloudysky.jpg">
+        <img id="texture1" src="pattern1.jpg">
+        <img id="texture2" src="pattern2.png">
+        <img id="texture3" src="pattern3.png">
+        <img id="texture4" src="pattern4.png">
+        <img id="texture5" src="pattern5.jpg">
+        <img id="skyTexture" src="background.png">
         <a-asset-item id="glasscube"
             src="sphere.glb"
             response-type="arraybuffer" crossorigin="anonymous">
             </a-asset-item>
       </a-assets>
       
-      <a-sphere id="hehe" position="5 4.5 -1.5" rotation="0 0 0" radius="0.35" src="#sphereTexture"
-        animation="property: rotation; to: 0 360 0; dur: 10000; loop: true; easing: linear;"
-        animation__2="property: position; from: 1.5 0.5 -1.5; to: 1.5 1.25 -1.5; loop: true; dur: 12000; dir: alternate;">
-      </a-sphere>
+      <a-box id="animated-cube" position="0 0.5 0" src="#texture1" 
+             animation="property: position; to: 2 1.5 0; dir: alternate; dur: 1000; loop: true; delay: 0; easing: linear"
+             animation__2="property: position; to: 2 0.5 0; dir: alternate; dur: 1000; loop: true; delay: 1000; easing: linear"
+             animation__3="property: position; to: 0 0.5 0; dir: alternate; dur: 1000; loop: true; delay: 2000; easing: linear"
+             animation__4="property: position; to: -2 0.5 0; dir: alternate; dur: 1000; loop: true; delay: 3000; easing: linear"
+             animation__5="property: position; to: 0 0.5 0; dir: alternate; dur: 1000; loop: true; delay: 4000; easing: linear">
+      </a-box>
 
-       <a-sphere position="-3 0.75 -5.5" rotation="0 0 0" radius="0.75" src="#sphereTexture"
+       <!--<a-sphere position="-3 0.75 -5.5" rotation="0 0 0" radius="0.75" src="#sphereTexture"
          animation="property: rotation; to: 0 360 0; dur: 12500; loop: true; easing: linear;"
          animation__2="property: position; from: -3 0.75 -5.5; to: -3 1.25 -5.5; loop: true; dur: 8000; dir: alternate;">
       </a-sphere>
@@ -31,7 +37,7 @@
       <a-sphere position="1 2.25 4.5" rotation="0 0 0" radius="0.25" src="#sphereTexture"
         animation="property: rotation; to: 0 360 0; dur: 7000; loop: true; easing: linear;"
         animation__2="property: position; from: 1.35 2.25 -3.5; to: 1.35 -0.2 -3.5; loop: true; dur: 7500; dir: alternate;">
-      </a-sphere>
+      </a-sphere>-->
       
       <a-sky height="1024" radius="30" src="#skyTexture" theta-length="180" width="1024" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;"></a-sky>
       <a-light type="ambient" color="#75DAFF"></a-light>
@@ -48,7 +54,7 @@
       </a-camera>
     </a-scene>
     <script>
-      var el = document.querySelector('#hehe');
+      var el = document.querySelector('#animated-cube');
       console.log(el.hasLoaded);
       console.log(el.getAttribute('position'));
       console.log(el.getAttribute('animation'));

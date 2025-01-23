@@ -48,7 +48,14 @@
     
     </a-scene>
     <script>
-      
+      const words = ["Truth", "God", "Lie", "Human", "Beauty"];
+      const textEntity = document.getElementById('dynamic-text');
+
+      function changeText() {
+        const randomIndex = Math.floor(Math.random() * words.length); // Get a random index
+        textEntity.value = words[randomIndex]; // Update the text value
+      }
+      setInterval(changeText, 1500);
     </script>
   </body>
 </html>
